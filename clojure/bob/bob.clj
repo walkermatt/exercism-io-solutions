@@ -15,7 +15,7 @@
 (defn saying-nothing?
   "Only whitespace"
   [msg]
-  (empty? (string/trim msg)))
+  (string/blank? msg))
 
 (def responses
   "List of responses for a give predicate. Each entry is of the form [pred msg]"
