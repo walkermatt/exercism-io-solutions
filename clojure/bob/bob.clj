@@ -5,7 +5,7 @@
   "A string with no lower-case characters and some upper-case characters"
   [msg]
   (and (= msg (string/upper-case msg))
-       (not (= msg (string/lower-case msg)))))
+       (not= msg (string/lower-case msg))))
 
 (defn question?
   "Question mark at the end of a string"
