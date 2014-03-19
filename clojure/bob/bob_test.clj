@@ -43,4 +43,16 @@
 (deftest responds-to-number-question
   (is (= "Sure." (bob/response-for "4?"))))
 
+(deftest has-some-lower
+  (is (= (bob/some-lower "Hi!") \i)))
+
+(deftest no-lower
+  (is (nil? (bob/some-lower "HI!"))))
+
+(deftest has-some-upper
+  (is (= (bob/some-upper "Hi!") \H)))
+
+(deftest no-upper
+  (is (= (bob/some-upper "hi!"))))
+
 (run-tests)
