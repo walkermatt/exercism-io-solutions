@@ -1,17 +1,11 @@
-(ns bob)
-
-(defn some-chars
-  "Returns the first char within the given range found in coll"
-  [first-char last-char coll]
-  (some (set (map char (range (int first-char) (inc (int last-char))))) coll))
-
-(def some-upper (partial some-chars \A \Z))
-(def some-lower (partial some-chars \a \z))
+(ns bob
+  (:require [clojure.string :as string]))
 
 (defn shouting?
   "A string with no lower-case characters and some upper-case characters"
   [msg]
-  (and (some-upper msg) (not (some-lower msg))))
+  (and (= msg (string/upper-case msg))
+       (not (= msg (string/lower-case msg)))))
 
 (defn question?
   "Question mark at the end of a string"
@@ -21,7 +15,7 @@
 (defn saying-nothing?
   "Only whitespace"
   [msg]
-  (empty? (clojure.string/trim msg)))
+  (empty? (string/trim msg)))
 
 (def responses
   "List of responses for a give predicate. Each entry is of the form [pred msg]"
