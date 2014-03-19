@@ -23,13 +23,15 @@
   [msg]
   (empty? (clojure.string/trim msg)))
 
+(def responses
+  "List of responses for a give predicate. Each entry is of the form [pred msg]"
+  [[shouting? "Woah, chill out!"]
+   [question? "Sure."]
+   [saying-nothing? "Fine. Be that way!"]
+   [identity "Whatever."]])
+
 (defn response-for
-  "Bob's response to a given message"
+  "Bob's response to a given message. Returns the message associated with the
+  first predicate to return a truthy value in the responses vector."
   [msg]
-  (if (shouting? msg)
-    "Woah, chill out!"
-    (if (question? msg)
-      "Sure."
-      (if (saying-nothing? msg)
-        "Fine. Be that way!"
-        "Whatever."))))
+  (some #(if ((first %) msg) (last %)) responses))
