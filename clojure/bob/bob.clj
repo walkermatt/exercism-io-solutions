@@ -10,7 +10,7 @@
 (defn question?
   "Question mark at the end of a string"
   [msg]
-  (re-find #"\?$" msg))
+  (= (last msg) \?))
 
 (defn saying-nothing?
   "Only whitespace"
