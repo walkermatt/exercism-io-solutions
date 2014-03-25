@@ -20,5 +20,5 @@
 
 (defn pretty-print
   [n]
- (let [groups (re-find #"(\d{3})(\d{3})(\d{4})" (number n))]
-   (str "(" (nth groups 1) ") " (nth groups 2) "-" (nth groups 3))))
+  (let [parts (re-find #"(\d{3})(\d{3})(\d{4})" (number n))]
+    (apply format "(%s) %s-%s" (drop 1 parts))))
