@@ -1,22 +1,16 @@
 (ns robot)
 
-(def robot-names [])
-
-(defn str-from-fn
-  [n f]
-  (apply str (take n (repeatedly f))))
-
 (defn rand-char
-  [n]
-  (str-from-fn n #(char (+ (int \A) (rand 26)))))
+  []
+  (char (+ (int \A) (rand 26))))
 
 (defn rand-num
-  [n]
-  (str-from-fn n #(int (rand 10))))
+  []
+  (int (rand 10)))
 
 (defn generate-name
   []
-  (str (rand-char 2) (rand-num 4)))
+  (str (rand-char) (rand-char) (rand-num) (rand-num) (rand-num) (rand-num)))
 
 (defn robot
   []
