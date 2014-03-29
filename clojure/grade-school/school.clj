@@ -6,7 +6,7 @@
 
 (defn add
   [db pupil grade]
-  (assoc db grade (conj (school/grade db grade) pupil)))
+  (update-in db [grade] (comp vec conj) pupil))
 
 (defn sorted
   [db]
