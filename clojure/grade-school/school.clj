@@ -2,7 +2,7 @@
 
 (defn grade
   [db grade]
-  (get db grade []))
+  (db grade []))
 
 (defn add
   [db pupil grade]
