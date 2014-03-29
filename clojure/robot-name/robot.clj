@@ -2,7 +2,7 @@
 
 (defn rand-char
   []
-  (char (+ (int \A) (rand 26))))
+  (char (first (shuffle (range (int \A) (inc (int \Z)))))))
 
 (defn rand-num
   []
