@@ -22,4 +22,5 @@
 
 (defn reset-name
   [bot]
-  (swap! bot #(assoc % :name (generate-name))))
+  (let [n (generate-name)]
+    (swap! bot assoc :name n)))
