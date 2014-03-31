@@ -25,4 +25,8 @@
 (deftest new-name-is-different-than-old-name
   (is (not (= original-name (robot/robot-name robbie)))))
 
+(deftest new-name-is-remembered
+  (let [n (robot/unique-name)]
+    (is (contains? (deref robot/names) n))))
+
 (run-tests)

@@ -1,5 +1,7 @@
 (ns robot)
 
+(def names (ref #{}))
+
 (defn rand-char
   []
   (char (rand-nth (range (int \A) (inc (int \Z))))))
@@ -12,9 +14,18 @@
   []
   (str (rand-char) (rand-char) (rand-num) (rand-num) (rand-num) (rand-num)))
 
+(defn unique-name
+  ([] (unique-name 1000))
+  ([max-tries]
+   (dosync
+     (let [n (first (drop-while #(@names %) (repeatedly max-tries generate-name)))]
+       (if (nil? n)
+         (throw (Exception. "Failed to generate a unique name"))
+         (do (ref-set names (conj @names n)) n))))))
+
 (defn robot
   []
-  (atom {:name (generate-name)}))
+  (atom {:name (unique-name)}))
 
 (defn robot-name
   [bot]
@@ -22,5 +33,5 @@
 
 (defn reset-name
   [bot]
-  (let [n (generate-name)]
+  (let [n (unique-name)]
     (swap! bot assoc :name n)))
