@@ -2,11 +2,11 @@
 
 (defn rand-char
   []
-  (char (first (shuffle (range (int \A) (inc (int \Z)))))))
+  (char (rand-nth (range (int \A) (inc (int \Z))))))
 
 (defn rand-num
   []
-  (int (rand 10)))
+  (rand-int 10))
 
 (defn generate-name
   []
