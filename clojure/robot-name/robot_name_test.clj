@@ -27,6 +27,7 @@
 
 (deftest new-name-is-remembered
   (let [n (robot/unique-name)]
-    (is (contains? (deref robot/names) n))))
+    (is (contains? (:all (deref robot/names)) n))
+    (is (= (:last (deref robot/names)) n))))
 
 (run-tests)
