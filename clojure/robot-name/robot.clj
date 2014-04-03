@@ -21,7 +21,7 @@
   assigned to `:last`."
   ([names] (add-unique-name names 1000))
   ([names max-tries]
-    (if-let [n (first (drop-while #((:all names) %) (repeatedly max-tries generate-name)))]
+    (if-let [n (first (drop-while (:all names) (repeatedly max-tries generate-name)))]
         (-> names
             (assoc :last n)
             (update-in [:all] conj n))
