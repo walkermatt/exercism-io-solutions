@@ -14,15 +14,12 @@ class Bob:
 
 def shouting(msg):
     "A string with no lower-case characters and some upper-case characters"
-    return msg.upper() == msg and msg.lower() != msg
+    return msg.isupper()
 
 
 def question(msg):
     "Question mark at the end of a string"
-    try:
-        return msg[-1] == "?"
-    except:
-        False
+    return msg.endswith("?")
 
 
 def saying_nothing(msg):
