@@ -1,4 +1,4 @@
-(ns school)
+(ns grade_school)
 
 (defn grade
   [db grade]
@@ -10,4 +10,4 @@
 
 (defn sorted
   [db]
-  (into {} (map #(update-in % [1] sort) db)))
+  (into (sorted-map) (map #(update-in % [1] sort) db)))
